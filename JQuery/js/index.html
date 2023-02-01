@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="data:base64,iVBORw0KGgo=">
+
+</head>
+
+<body>
+    <h1 class="demo" id="demo">this is jquery1</h1>
+    <h1 class="demo">this is jquery2</h1>
+    <h1 class="demo">this is jquery3</h1>
+    <h1 class="demo" id="hide">Hide and Show</h1>
+    <button id="hide" class="hide">Hide Me</button>
+    <button class="toggle">click me to show the toggle effect</button>
+    <p>this is show and hide paragraph Lorem ipsum dolor sit Lorem ipsum dolor sit amet.</p>
+
+
+    <div class="div" id="div1" style="height: 50px; width: 50px;background-color: red;"></div>
+    <div class="div" id="div2" style="height: 50px; width: 50px;background-color: green;"></div>
+    <div class="div" id="div3" style="height: 50px; width: 50px;background-color: blue;"></div>
+
+    <button class="fade">Click Me to show fade effects</button>
+
+
+
+    <div class="slide-div" style="height: 100px;width: 400px;  background-color: black;"></div>
+    <button class="slide">Click Me to show slide effects</button>
+
+    <p id="chain">this is the practice of jquery chaining </p>
+
+    <h3 class="text">jQuery Get</h3>
+    <button class="get">click me to get the above text</button>
+
+    <h3 class="append"> my </h3>
+    <h3 class="prepend">my </h3>
+    <h3 class="after"> my </h3>
+    <h3 class="before"> my</h3>
+
+
+    <div class="remove" style="height: 250px;width: 250px; background-color: chartreuse;">
+
+        <p id="remove1">this is removeable paragraph of div</p>
+        <p id="remove2">this is second removeable paragraph of div</p>
+
+    </div>
+    <button class="rm-btn">click me to remove the text inside the div</button>
+
+    <div class="addclass"></div>
+    <button class="addbtn">click me to add new css blue class</button>
+
+    <h3 class="css">i will demostrate the Jquery css properties</h3>
+    <button class="css-btn">clilck me to apply jquery css</button><br>
+
+    <button class="show">click me to show the css property of above heading</button>
+
+   
+    <div class="traverse" style="height: 400px;width: 400px;background-color:cadetblue;">
+       </p> <p class="traverse1">i am first traverse paragraph</p>
+        <p class="traverse2">i am first traverse paragraph</p>
+        <p class="traverse3">i am first traverse paragraph</p>
+        <p class="traverse4">i am first traverse paragraph</p>
+    </div>
+
+    <button class="parentfinder">click me to find the parent</button>
+
+
+
+    <div class="ajaxdiv" style="height: 200px;width: 200px;background-color: cyan;"></div>
+ <button id="ajaxbtn">click here to get ajax</button>
+
+
+
+    <script>
+        $(document).ready(function () {
+            jQuery('.demo').click(function () {
+                console.log("clicked")
+            })
+
+            //   $("Button").click(function(){
+            //       $(this).hide();
+            //   }) 
+
+            $("button").hover(function () {
+                $(this).css("background-color", "green");
+            })
+
+            // $("button").mouseleave(function(){
+            //     alert("you are moving down!")
+            // })
+
+
+            $("#demo").on({
+                mouseenter: function () {
+                    $(this).css("background-color", "lightgray");
+                },
+                mouseleave: function () {
+                    $(this).css("background-color", "lightblue");
+                }
+            })
+            $(".demo").click(function () {
+                document.write($("#demo").html())
+            })
+
+            // $("#hide").mouseenter(function(){
+            //     $(this).hide(1000);
+            // })
+            // $("#hide").mouseout(function(){
+            //     $(this).show(1000);
+            // })
+            // $("#hide").click(function(){
+            //     $(this).toggle();
+            // })
+
+
+            $(".toggle").click(function () {  //The optional speed parameter can take the following values: "slow", "fast", or milliseconds.
+                // The optional callback parameter is a function to be executed after toggle() completes.
+                $("p").toggle("slow");
+            })
+
+            // The jQuery fadeToggle() method toggles between the fadeIn() and fadeOut() methods.
+
+            // If the elements are faded out, fadeToggle() will fade them in.
+
+            // If the elements are faded in, fadeToggle() will fade them out.
+
+            // Syntax:
+            // $(selector).fadeToggle(speed,callback);
+            $(".fade").click(function () {
+                $("#div1").fadeToggle(1000)
+                $("#div2").fadeToggle(2000)
+                $("#div3").fadeToggle(3000)
+            })
+
+
+
+            /*The jQuery slideToggle() method toggles between the slideDown() and slideUp() methods.
+            
+            If the elements have been slid down, slideToggle() will slide them up.
+            
+            If the elements have been slid up, slideToggle() will slide them down.
+            $(selector).slideToggle(speed,callback);*/
+
+
+
+            $(".slide").click(function () {
+                $(".slide-div").slideToggle(1000, function () {
+
+                });
+            })
+
+            $("#chain").click(function () {
+                $(this).css("color", "red").slideUp(1000);
+            })
+
+
+            //Get Content - text(), html(), and val() attribute()
+
+            // $(".get").click(function(){
+            //    document.write($(".text").text());
+
+            // })
+
+            //set Content - text(), html(), and val() att
+
+            $(".get").click(function () {
+                $(".text").text("Hello JQuery");
+            })
+
+
+
+            $(".append").click(function () {
+                $(this).append("append")
+            })
+            $(".prepend").click(function () {
+                $(this).prepend("prepend")
+            })
+            $(".after").click(function () {
+                $(this).after("after")
+            })
+            $(".before").click(function () {
+                $(this).before("before")
+            })
+
+
+            //The jQuery remove() method removes the selected element(s) and its child elements.
+            //The jQuery empty() method removes the child elements of the selected element(s).
+
+            // $(".rm-btn").click(function(){
+            //     $(".remove").empty();
+            // })
+
+
+            $(".rm-btn").click(function () {
+                $("p").remove("#remove2");     //Filter to remove the element(by calss and id) 
+            })
+
+            //add class works only if the selected class is down in css document
+
+            // $(".addbtn").click(function(){
+            //     $(".addclass").addClass("blue");
+
+            // });
+
+            $(".addbtn").click(function () {
+                $(".addclass").removeClass("addclass");
+
+            });
+
+            // to set the single property css("propertyname","value");
+            // to set multiple properties of css({"propertyname":"value","propertyname":"value",...});
+
+            $(".css-btn").click(function () {
+                $(".css").css({ "background-color": "red", "height": "50px" })
+            })
+
+            $(".show").click(function () {
+                alert($(".css").css("background-color"))
+            })
+
+
+            // traversing 
+
+            $(".parentfinder").click(function () {
+               $(".traverse3").parent().css({ "border": "2px solid red"});;
+            })
+
+
+    // $("#ajaxbtn").click(function(){
+    //         $(".ajaxdiv").load("ajax.txt")})
+    
+
+        $("#ajaxbtn").click(function(){
+  $(".ajaxdiv").load("ajax.txt", function(responseTxt, statusTxt, xhr){
+    if(statusTxt == "success")
+      alert("External content loaded successfully!");
+    if(statusTxt == "error")
+      alert("Error: " + xhr.status + ": " + xhr.statusText);
+  });
+}); 
+
+
+});
+
+
+
+    </script>
+</body>
+
+</html>
